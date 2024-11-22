@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to HTML Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Markdown to HTML Converter</h1>
+        
+        <div class="instructions">
+            <h3>How to Use Markdown</h3>
+            <p>Enter Markdown text below. Here are some basic symbols:</p>
+            <ul>
+                <li><strong>#</strong> for headers (e.g., <code># Header 1</code>)</li>
+                <li><strong>##</strong> for subheaders (e.g., <code>## Header 2</code>)</li>
+                <li><strong>###</strong> for smaller headers (e.g., <code>### Header 3</code>)</li>
+                <li><strong>**</strong> for bold text (e.g., <code>**bold**</code>)</li>
+                <li><strong>*</strong> for italic text (e.g., <code>*italic*</code>)</li>
+                <li><strong>~~</strong> for strikethrough (e.g., <code>~~strikethrough~~</code>)</li>
+                <li><strong>^</strong> for superscript (e.g., <code>^superscript^</code>)</li>
+                <li><strong>~</strong> for subscript (e.g., <code>~subscript~</code>)</li>
+                <li><strong>1.</strong> for numbered lists (e.g., <code>1. Item 1</code>)</li>
+                <li><strong>*</strong> or <strong>-</strong> for bullet points (e.g., <code>- Item</code>)</li>
+                <li><strong>[Link Text](URL)</strong> for links (e.g., <code>[Google](https://www.google.com)</code>)</li>
+                <li><strong>![Image](URL)</strong> for images (e.g., <code>![Image](image.jpg)</code>)</li>
+            </ul>
+        </div>
+
+        <form action="/" method="post">
+            <label for="markdown_text">Enter Markdown:</label>
+            <textarea id="markdown_text" name="markdown_text" rows="10" cols="50">{{ markdown_text }}</textarea>
+            <br>
+            <button type="submit">Convert</button>
+        </form>
+
+        {% if html_content %}
+        <h2>Converted HTML Code</h2>
+        <pre class="result">{{ html_content }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
